@@ -1,0 +1,42 @@
+
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 8px rgba(194, 194, 215, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 14px rgb(243, 243, 246);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(194, 194, 205, 0.8);
+  }
+}
+
+.animated-image {
+  animation: glow 2s infinite;
+}
+
+
+/* Add these styles to your CSS file */
+
+.about-text-container {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.about-image-container {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.about-text-container.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-image-container.slide-in {
+  opacity: 1;
+  transform: translateX(0);
+}

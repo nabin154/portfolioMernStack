@@ -1,0 +1,20 @@
+/* YourCssFileName.css */
+
+@keyframes heartbeatAnimation {
+  0% {
+    transform: scale(1);
+    color: lightblue;
+  }
+  50% {
+    transform: scale(1.2);
+    color: #ff5252; /* You can adjust the color as needed */
+  }
+  100% {
+    transform: scale(1);
+    color: lightblue;
+  }
+}
+
+.heartbeat-animation {
+  animation: heartbeatAnimation 1s infinite;
+}

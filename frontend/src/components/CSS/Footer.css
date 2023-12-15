@@ -1,0 +1,23 @@
+
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 8px rgba(194, 194, 215, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 12px rgb(243, 243, 246);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(194, 194, 205, 0.8);
+  }
+}
+
+.animated-image {
+  animation: glow 2s infinite;
+}
+
+/* Add the 'animated-image' class to the image element in your React component */
+
+/* Footer.css */
+
+

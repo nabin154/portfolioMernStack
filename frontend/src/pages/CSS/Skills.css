@@ -1,0 +1,23 @@
+/* Skills.css */
+
+.skills-container {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.skills-container.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-list-container {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.skills-list-container.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}

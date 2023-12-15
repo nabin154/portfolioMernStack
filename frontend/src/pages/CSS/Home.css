@@ -1,0 +1,67 @@
+.animated-text {
+    text-transform: capitalize;
+  display: inline-block;
+  animation: bounceAnimation 1.5s ease infinite;
+}
+
+.btn:hover{
+  box-shadow: 0 0 10px rgb(241, 241, 245);
+}
+
+@keyframes bounceAnimation {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+
+
+.animated-text span {
+  display: inline-block;
+  animation: fadeInOut 3s linear infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Home.css */
+/* Home.css */
+
+.home-text-container {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.home-image-container {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.home-text-container.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-image-container.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+
+
+
