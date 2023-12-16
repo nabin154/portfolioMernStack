@@ -33,7 +33,7 @@ const AdminMessages = ({ darkMode }) => {
       };
 
       await axios.delete(
-        `http://127.0.0.1:5000/api/admin/messagedelete/${id}`,
+        `https://portfoliobackend-wv3s.onrender.com/api/admin/messagedelete/${id}`,
         config
       );
       toast({
@@ -65,7 +65,7 @@ const AdminMessages = ({ darkMode }) => {
       };
       try {
         const { data } = await axios.get(
-          "http://127.0.0.1:5000/api/admin/messages",
+          "https://portfoliobackend-wv3s.onrender.com/api/admin/messages",
           config
         );
         setMessages(data);

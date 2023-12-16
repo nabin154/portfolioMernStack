@@ -25,7 +25,9 @@ const navigate = useNavigate();
 
   useEffect(() => {
     const details = async () => {
-      await fetch("http://127.0.0.1:5000/api/portfolio/skills")
+      await fetch(
+        "https://portfoliobackend-wv3s.onrender.com/api/portfolio/skills"
+      )
         .then((response) => response.json())
         .then((data) => {
           setSkillsData(data);

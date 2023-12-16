@@ -101,7 +101,7 @@ const AdminHome = () => {
 
     try {
       const { data } = await axios.post(
-        "http://127.0.0.1:5000/api/admin/userinfo",
+        "https://portfoliobackend-wv3s.onrender.com/api/admin/userinfo",
         JSON.stringify({
           name: updatedUser.name,
           email: updatedUser.email,
@@ -113,7 +113,7 @@ const AdminHome = () => {
           instagram: updatedUser.instagram,
           github: updatedUser.github,
           linkedIn: updatedUser.linkedIn,
-          cvLink:updatedUser.cvLink,
+          cvLink: updatedUser.cvLink,
         }),
         config
       );

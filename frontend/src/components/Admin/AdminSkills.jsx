@@ -44,7 +44,7 @@ const AdminSkills = ({ darkMode }) => {
         },
       };
       const { data } = await axios.post(
-        "http://127.0.0.1:5000/api/admin/addskills",
+        "https://portfoliobackend-wv3s.onrender.com/api/admin/addskills",
         formData,
         config
       );

@@ -8,7 +8,7 @@ const DataProvider = ({ children }) => {
   const [userDetails, setUserDetails] = useState();
 
  useEffect(() => {
-   const dataString = localStorage.getItem("token");
+   const dataString = sessionStorage.getItem("token");
 
    if (dataString) {
      const data = JSON.parse(dataString);
@@ -18,14 +18,16 @@ const DataProvider = ({ children }) => {
 
   useEffect(() =>{
     const details = async()=>{
-     await fetch("http://127.0.0.1:5000/api/portfolio/userinfo")
-      .then((response) => response.json())
-      .then((data) => {
-        setUserDetails(data);
-      })
-      .catch((error) => {
-        console.error("error fetching the user data");
-      });
+     await fetch(
+       "https://portfoliobackend-wv3s.onrender.com/api/portfolio/userinfo"
+     )
+       .then((response) => response.json())
+       .then((data) => {
+         setUserDetails(data);
+       })
+       .catch((error) => {
+         console.error("error fetching the user data");
+       });
     }
     details();
   },[navigate]);

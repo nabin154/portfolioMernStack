@@ -24,7 +24,7 @@ const Footer = ({ darkMode }) => {
       bottom={0}
       left="50%"
       transform="translateX(-50%)"
-      w={{ sm: "100%", md: "50%", lg: "40%" }}
+      w={{ base: "90%", md: "50%", lg: "40%" }}
       h={"58px"}
       bg={darkMode ? "black" : "white"}
       color={darkMode ? "white" : "black"}

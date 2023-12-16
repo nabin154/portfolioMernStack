@@ -49,7 +49,7 @@ const LoginAdmin = ({ darkMode }) => {
         },
       };
       const { data } = await axios.post(
-        "http://127.0.0.1:5000/api/admin/login",
+        "https://portfoliobackend-wv3s.onrender.com/api/admin/login",
         JSON.stringify({
           email: loginData.email,
           password: loginData.password,
@@ -57,7 +57,7 @@ const LoginAdmin = ({ darkMode }) => {
         }),
         config
       );
-      localStorage.setItem("token", JSON.stringify(data));
+     sessionStorage.setItem("token", JSON.stringify(data));
       console.log("successful login");
       navigate("/adminpanel");
        toast({

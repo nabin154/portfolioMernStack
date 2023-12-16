@@ -35,7 +35,9 @@ const About = ({ darkMode }) => {
 
   useEffect(() => {
     const details = async () => {
-      await fetch("http://127.0.0.1:5000/api/portfolio/educations")
+      await fetch(
+        "https://portfoliobackend-wv3s.onrender.com/api/portfolio/educations"
+      )
         .then((response) => response.json())
         .then((data) => {
           setEducations(data);

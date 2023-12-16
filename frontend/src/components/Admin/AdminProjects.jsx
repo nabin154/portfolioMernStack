@@ -43,7 +43,7 @@ const AdminProjects = ({ darkMode }) => {
         },
       };
       const { data } = await axios.post(
-        "http://127.0.0.1:5000/api/admin/addproject",
+        "https://portfoliobackend-wv3s.onrender.com/api/admin/addproject",
         projectData,
         config
       );

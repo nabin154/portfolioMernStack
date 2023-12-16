@@ -1,7 +1,7 @@
 const mongoose= require("mongoose");
 const colors = require("colors");
 
-const URI = "mongodb://localhost:27017/portfolio";
+const URI = process.env.MONGODB_URI;
 const connectDB =async ()=>{
 
 

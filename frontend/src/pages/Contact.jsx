@@ -61,7 +61,7 @@ const { userDetails } = useUser();
 
    try {
      const { data } = await axios.post(
-       "http://127.0.0.1:5000/api/portfolio/message",
+       "https://portfoliobackend-wv3s.onrender.com/api/portfolio/message",
        {
          name: formData.name,
          email: formData.email,
@@ -91,6 +91,7 @@ const { userDetails } = useUser();
        status: "error",
        duration: 5000,
        isClosable: true,
+       
        position: "top",
      });
    }
@@ -202,7 +203,7 @@ const { userDetails } = useUser();
               }
               borderRadius="lg"
             >
-              <Text fontSize="3xl" mb={4} fontWeight="bold" color="blue.500">
+              <Text fontSize={{base:"xl",md:"3xl"}} mb={4} fontWeight="bold" color="blue.500">
                 Contact Information
               </Text>
               <Box

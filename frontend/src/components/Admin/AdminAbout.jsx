@@ -41,7 +41,7 @@ const AdminAbout = ({darkMode}) => {
         },
       };
       const { response } = await axios.post(
-        "http://127.0.0.1:5000/api/admin/addeducation",
+        "https://portfoliobackend-wv3s.onrender.com/api/admin/addeducation",
         data,
         config
       );
