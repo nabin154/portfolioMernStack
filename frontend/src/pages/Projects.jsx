@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Text,
@@ -12,16 +12,13 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-
 } from "@chakra-ui/react";
-import './CSS/Projects.css'
+import "./CSS/Projects.css";
 import { useNavigate } from "react-router-dom";
-const Projects = ({darkMode}) => {
+const Projects = ({ darkMode }) => {
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
-
-  const [projectsData ,setProjectsData] = useState();
- 
+  const [projectsData, setProjectsData] = useState();
 
   useEffect(() => {
     const details = async () => {
@@ -39,7 +36,6 @@ const navigate = useNavigate();
     details();
   }, [navigate]);
 
-
   return (
     <Box padding={8}>
       <Heading
@@ -53,24 +49,24 @@ const navigate = useNavigate();
       </Heading>
 
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={8}>
-        {projectsData && projectsData.map((project, index) => (
-          <ProjectCard key={index} project={project} darkMode={darkMode} />
-        ))}
+        {projectsData &&
+          projectsData.map((project, index) => (
+            <ProjectCard key={index} project={project} darkMode={darkMode} />
+          ))}
       </SimpleGrid>
     </Box>
   );
 };
 
-const ProjectCard = ({ project,darkMode }) => {
-  const { name, description, image,githubLink,livedemoLink } = project;
+const ProjectCard = ({ project, darkMode }) => {
+  const { name, description, image, githubLink, livedemoLink } = project;
   const [expanded, setExpanded] = useState(false);
-    const [animationComplete, setAnimationComplete] = useState(false);
-
+  const [animationComplete, setAnimationComplete] = useState(false);
 
   const toggleExpand = () => {
     setExpanded(!expanded);
   };
- 
+
   useEffect(() => {
     const delay = 100;
     const timeoutId = setTimeout(() => {
@@ -80,13 +76,13 @@ const ProjectCard = ({ project,darkMode }) => {
     return () => clearTimeout(timeoutId);
   }, []);
 
-
   return (
     <Box
       className={`card ${animationComplete ? "fade-in" : ""}`}
       borderWidth="1px"
       borderRadius="lg"
-      overflow="hidden"
+      height={"500px"}
+      overflowY="scroll"
     >
       <Image src={image} alt={name} />
 
@@ -107,7 +103,12 @@ const ProjectCard = ({ project,darkMode }) => {
           {expanded ? description : `${description.slice(0, 100)}...`}
         </Text>
         {description.length > 100 && (
-          <Button variant={"outlined"} onClick={toggleExpand} mb={4}>
+          <Button
+            variant={"outlined"}
+            onClick={toggleExpand}
+            mb={4}
+            color={"blue.600"}
+          >
             {expanded ? "Read Less" : "Read More"}
           </Button>
         )}
