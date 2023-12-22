@@ -16,8 +16,7 @@ Want to see my Admin panel?
 ![Screenshot 2023-12-22 202543](https://github.com/nabin154/portfolioMernStack/assets/82200770/be827805-45c1-400f-9348-4cd8d2025a0c)
 ![Screenshot 2023-12-22 202845](https://github.com/nabin154/portfolioMernStack/assets/82200770/01a9a89c-6301-4db4-807f-df41ccb21249)
 
-
-
+these messages are automatically sent to my gmail as well using nodemailer !!
 That's all !😁
 
 Happy coding !
