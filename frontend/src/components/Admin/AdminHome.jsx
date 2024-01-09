@@ -7,6 +7,8 @@ import {
   Icon,
   useColorModeValue,
   useToast,
+  FormControl,
+  FormLabel,
 } from "@chakra-ui/react";
 import { useState,useEffect } from "react";
 import { FaFacebook, FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
@@ -82,6 +84,62 @@ const AdminHome = () => {
 
 
   };
+
+
+
+  const postDetails = (pics, fieldName) => {
+    setChanged(true);
+
+    if (pics === undefined) {
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+      return;
+    }
+    console.log(pics);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "portfolio");
+      data.append("cloud_name", "dumxmt7sm");
+      fetch("https://api.cloudinary.com/v1_1/dumxmt7sm/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+                 setUser({ ...user, [fieldName]: data.url });
+          console.log(data.url.toString());
+           toast({
+             title: "Uploaded successfully!",
+             status: "success",
+             duration: 5000,
+             isClosable: true,
+             position: "top",
+           });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+      return;
+    }
+  };
+
+
+
+
    useEffect(() => {
      defaultUserSet();
    }, [user]);
@@ -208,24 +266,29 @@ setChanged(false);
           />
         </HStack>
         <HStack>
-          <Input
-            placeholder="Image URL"
-            bg={inputBgColor}
-            _placeholder={{ color: useColorModeValue("gray.500", "gray.300") }}
-            width="50%"
-            name="image1"
-            value={user.image1}
-            onChange={handleChange}
-          />
-          <Input
-            placeholder="Image second URL"
-            bg={inputBgColor}
-            _placeholder={{ color: useColorModeValue("gray.500", "gray.300") }}
-            width="50%"
-            name="image2"
-            value={user.image2}
-            onChange={handleChange}
-          />
+          <FormControl id="pic">
+            <FormLabel style={{ fontWeight: "bold", color: "lightblue" }}>
+              Upload your Home picture
+            </FormLabel>
+            <Input
+              type="file"
+              p={1}
+              accept="image/*"
+              onChange={(e) => postDetails(e.target.files[0], "image1")}
+            />
+          </FormControl>
+
+          <FormControl id="pic1">
+            <FormLabel style={{ fontWeight: "bold", color: "lightblue" }}>
+              Upload your About Picture
+            </FormLabel>
+            <Input
+              type="file"
+              p={1}
+              accept="image/*"
+              onChange={(e) => postDetails(e.target.files[0], "image2")}
+            />
+          </FormControl>
         </HStack>
 
         <HStack spacing={4} width="100%">

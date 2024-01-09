@@ -6,6 +6,8 @@ import {
   Textarea,
   Button,
   useToast,
+  FormControl,
+  FormLabel,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useUser } from "../../Context/DataProvider";
@@ -77,6 +79,59 @@ const AdminProjects = ({ darkMode }) => {
     }
   };
 
+
+
+  
+  const postDetails = (pics, fieldName) => {
+
+    if (pics === undefined) {
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+      return;
+    }
+    console.log(pics);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "portfolio");
+      data.append("cloud_name", "dumxmt7sm");
+      fetch("https://api.cloudinary.com/v1_1/dumxmt7sm/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProjectData({ ...projectData, [fieldName]: data.url });
+          console.log(data.url.toString());
+           toast({
+             title: "Uploaded successfully!",
+             status: "success",
+             duration: 5000,
+             isClosable: true,
+             position: "top",
+           });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+      return;
+    }
+  };
+
+
   return (
     <Box p={4}>
       <Heading mb={4} color={textcolor}>
@@ -101,15 +156,19 @@ const AdminProjects = ({ darkMode }) => {
           onChange={handleChange}
           color={textcolor}
         />
-        <Input
-          mb={3}
-          placeholder="Image Link"
-          _placeholder={{ color: textcolor }}
-          name="imageLink"
-          value={projectData.imageLink}
-          onChange={handleChange}
-          color={textcolor}
-        />
+        <FormControl id="pic">
+          <FormLabel style={{ fontWeight: "bold", color: "lightblue" }}>
+            Upload the screenshot
+          </FormLabel>
+          <Input
+            type="file"
+            p={1}
+            mb={3}
+            accept="image/*"
+            onChange={(e) => postDetails(e.target.files[0], "imageLink")}
+          />
+        </FormControl>
+
         <Input
           mb={3}
           placeholder="Github link"

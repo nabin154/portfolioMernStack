@@ -24,10 +24,9 @@ import axios from "axios";
 import "./CSS/Contact.css";
 
 const Contact = ({ darkMode }) => {
-  const toast =useToast();
+  const toast = useToast();
   const navigate = useNavigate();
-const { userDetails } = useUser();
-
+  const { userDetails } = useUser();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -42,64 +41,68 @@ const { userDetails } = useUser();
       [name]: value,
     });
   };
- const handleSubmit = async (event) => {
-   event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-   const loadingToastId = toast({
-     title: "Sending Message...please wait !!",
-     status: "info",
-     duration: null, 
-     isClosable: false,
-     position: "top",
-   });
+    const loadingToastId = toast({
+      title: "Sending Message...please wait !!",
+      status: "info",
+      duration: null,
+      isClosable: false,
+      position: "top",
+    });
 
-   const config = {
-     headers: {
-       "Content-Type": "application/json",
-     },
-   };
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-   try {
-     const { data } = await axios.post(
-       "https://portfoliobackend-wv3s.onrender.com/api/portfolio/message",
-       {
-         name: formData.name,
-         email: formData.email,
-         message: formData.message,
-       },
-       config
-     );
+    try {
+      const { data } = await axios.post(
+        "https://portfoliobackend-wv3s.onrender.com/api/portfolio/message",
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        config
+      );
 
-     toast.update(loadingToastId, {
-       title: "Message Sent Successfully!",
-       description: "Thank you for Your message!",
-       status: "success",
-       duration: 5000,
-       isClosable: true,
-       position: "top",
-     });
+      toast.update(loadingToastId, {
+        title: "Message Sent Successfully!",
+        description: "Thank you for Your message!",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
 
-     setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "" });
 
-     console.log("successful message sent", data);
-   } catch (error) {
-     console.log("error in sending the message", error);
+      console.log("successful message sent", data);
+    } catch (error) {
+      console.log("error in sending the message", error);
 
-     toast.update(loadingToastId, {
-       title: "Message Sending Failed!",
-       description: "Oops! Please try again!",
-       status: "error",
-       duration: 5000,
-       isClosable: true,
-       
-       position: "top",
-     });
-   }
- };
+      toast.update(loadingToastId, {
+        title: "Message Sending Failed!",
+        description: "Oops! Please try again!",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
 
+        position: "top",
+      });
+    }
+  };
 
   return (
-    <Container>
+    <Container
+      height={"auto"}
+      maxH="80vh" 
+      overflowY="auto"
+      className="custom-scrollbar" 
+    >
       <Tabs isFitted variant="enclosed">
         <TabList>
           <Tab color={darkMode ? "white" : "black"}>Contact Form</Tab>
@@ -115,7 +118,7 @@ const { userDetails } = useUser();
               minHeight="60vh"
               width="100%"
               mx="auto"
-              p={2}
+              pb={5}
               className="contact-form"
               bg={darkMode ? "black" : "white"}
               boxShadow={
@@ -203,7 +206,12 @@ const { userDetails } = useUser();
               }
               borderRadius="lg"
             >
-              <Text fontSize={{base:"xl",md:"3xl"}} mb={4} fontWeight="bold" color="blue.500">
+              <Text
+                fontSize={{ base: "xl", md: "3xl" }}
+                mb={4}
+                fontWeight="bold"
+                color="blue.500"
+              >
                 Contact Information
               </Text>
               <Box
